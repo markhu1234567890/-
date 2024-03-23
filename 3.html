@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .cen {
+            /* margin: 0 auto; */
+            margin-left: 280px;
+            margin-right: 300px;
+            background-color: rgb(255, 255, 255);
+            height: 40px;
+            width: 780px;
+        }
+
+        .navbar {
+            display: grid;
+            justify-content: start;
+            align-content: start;
+        }
+
+        .top {
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            background: rgb(255, 254, 254);
+            position: fixed;
+            /*固定在顶部*/
+            top: 0;
+            /*离顶部的距离为0*/
+            width: 70%;
+        }
+
+        .top ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .top li {
+            float: left;
+            /* 使li内容横向浮动，即横向排列  */
+            margin-right: 5px;
+            /* 两个li之间的距离*/
+        }
+
+        .top li a {
+            /* 设置链接内容显示的格式*/
+            display: block;
+            /* 把链接显示为块元素可使整个链接区域可点击 */
+            color: rgb(0, 0, 0);
+            font-size: small;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            /* 去除下划线 */
+        }
+
+        .top li a:hover {
+            font-weight: 700
+        }
+
+        .top ul li ul {
+            /* 设置二级菜单 */
+            width: auto;
+            background: rgb(255, 255, 255);
+            position: absolute;
+            border-radius: 10%;
+            display: none;
+            /* 默认隐藏二级菜单的内容 */
+        }
+
+        .top ul li ul li {
+            /* 二级菜单li内容的显示 */
+            margin-right: 0;
+            float: none;
+            text-align: center;
+
+        }
+
+        .top ul li:hover ul {
+            /* 鼠标选中二级菜单内容时 */
+            display: block;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .column {
+            float: left;
+            width: 10%;
+            /* padding: 10px; */
+            height: 85px;
+        }
+
+        .studyplan {
+            width: 250px;
+            height: 150px;
+            background-color: rosybrown;
+        }
+
+        /* 将正文和文档的高度设置为 100% 以启用"整页选项卡" */
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial;
+        }
+
+        /* 选项卡链接样式 */
+        .tablink {
+            color: rgb(0, 0, 0);
+            float: left;
+            border: 0;
+            border-radius: 10%;
+            outline: none;
+            margin: 8px;
+            cursor: pointer;
+            padding: 8px 10px;
+            font-size: 15px;
+            width: 12%;
+        }
+
+        .tablink:hover {
+            font-weight: 700;
+        }
+
+        /* 设置标签内容的样式（并为整页内容添加 height:100% ） */
+        .tabcontent {
+            color: black;
+            display: none;
+            padding: 40px 20px;
+            height: 100%;
+        }
+
+        /* 定义悬停提示框的样式 */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+
+            background-color: #ffffff;
+            border: solid;
+            border-width: 0.1px;
+            border-radius: 10%;
+            border-color: #aaa;
+            color: black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .tooltiptext div {
+            display: inline-block;
+            margin-top: -15px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .tooltiptext :hover div {
+            display: block;
+        }
+
+        .tooltiptextcare {
+            background-color: rgb(53, 168, 130);
+            color: white;
+            font-size: 18px;
+            width: 270px;
+            line-height: 35px;
+            border-radius: 5%;
+            text-align: center;
+        }
+
+        #推荐 {
+            background-color: white;
+        }
+
+        #算法 {
+            background-color: white;
+        }
+
+        #数据结构 {
+            background-color: white;
+        }
+
+        #职业发展 {
+            background-color: white;
+        }
+
+        #竞赛 {
+            background-color: white;
+        }
+
+        #前端 {
+            background-color: white;
+        }
+
+        #后端 {
+            background-color: white;
+        }
+
+        .menuButton {
+            background-color: rgb(255, 255, 255);
+            font-family: "Gill Sans Extrabold", monospace;
+            word-wrap: break-word;
+            border: 0;
+            border-radius: 10%;
+            color: rgb(6, 6, 6);
+            float: left;
+            outline: none;
+            margin: 2px;
+            cursor: pointer;
+            padding: 6px 6px;
+            font-size: 14px;
+            width: 34px;
+        }
+
+        .menuButton:hover {
+            font-weight: 700;
+        }
+
+        .tabcontent1 {
+            color: black;
+            display: none;
+            height: 100%;
+        }
+
+        .dayworkhead {
+            color: rgb(54, 154, 193);
+            padding-left: 10px;
+        }
+
+        .dayworkbody {
+            color: rgb(52, 48, 48);
+            margin-top: -15px;
+            padding-left: 10px;
+            font-size: 14px;
+        }
+
+        #THU今 {
+            background-color: white
+        }
+
+        #FRI22 {
+            background-color: white
+        }
+
+        #SAT23 {
+            background-color: white
+        }
+
+        #SUN24 {
+            background-color: white
+        }
+
+        #MON25 {
+            background-color: white
+        }
+
+        #TUE26 {
+            background-color: white
+        }
+
+        #WED27 {
+            background-color: white
+        }
+
+        .dayworkbelow {
+            color: #b5b5b5;
+            margin-top: 3px;
+            font-size: 12px;
+            font-weight: 150;
+        }
+
+        .dayworkbelow:hover {
+            color: #2196F3;
+        }
+
+        /* 登录弹窗 用户名 与 密码 格式 */
+        .textStyle {
+            display: inline-block;
+            width: 60px;
+            text-align-last: justify;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cen">
+        <div class="top">
+            <ul>
+                <img src="QQ截图20240321164319.png" alt="" style="height: 30px; margin: 5px;">
+                <img src="" alt="">
+                <li><a href="#">学习</a></li>
+                <li><a href="#">题库</a></li>
+                <li><a href="#">竞赛</a></li>
+                <li><a href="#">讨论</a></li>
+                <li><a href="#">求职</a></li>
+                <li>
+                    <a href="#" style="color: #df9321;font-weight: 400;">商城</a>
+                    <ul>
+                        <li><a href="#" style="color: #df9321;font-weight: 400;">精品商城</a></li>
+                        <li><a href="#" style="color: #df9321;font-weight: 400;">力扣周边</a></li>
+                        <li><a href="#" style="color: #df9321;font-weight: 400;">Plus会员</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr style="width: 100%;">
+    <div class="cen" style="height: 700px;">
+
+        <p style="font-weight: 700;color: black;margin-bottom: 20px ;margin-top: 70px;">学习计划</p>
+
+
+        <div class="row">
+            <a href="#">
+                <div class="column" style="background-color:#aaa;">
+                    <img src="QQ截图20240320233713.png" alt="" style="border-radius:10%;padding:5px;width: 90%; ">
+                </div>
+                <div class="column" style="background-color:#bbb;width: 20%;margin-right: 20px;">
+                    <span style="font-size: 17px;color: black;">面试经典150题</span>
+                    <br>
+                    <br>
+                    <span style="font-size: 13px;color: black;">最经典的150道题，掌握面试所有知识点</span>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="column" style="background-color:#aaa;">
+                    <img src="QQ截图20240320233736.png" alt="" style="border-radius:10%;padding:5px;width: 90%;">
+                </div>
+                <div class="column" style="background-color:#bbb;width: 20%;margin-right: 20px;">
+                    <span style="font-size: 17px;color: black;">LeetCode热搜100题</span>
+                    <br>
+                    <br>
+                    <span style="font-size: 13px;color: black;">力扣最受刷题发烧友欢迎的100道题</span>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="column" style="background-color:#aaa;">
+                    <img src="QQ截图20240320233811.png" alt="" style="border-radius:10%;padding:5px;width: 90%;">
+                </div>
+                <div class="column" style="background-color:#bbb;width: 20%;margin-right: 20px; ">
+                    <span style="font-size: 17px;color: black;">动态规划（基础版）</span>
+                    <br>
+                    <br>
+                    <span style="font-size: 13px;color: black;">更细的知识点拆分，让入门更简单</span>
+                </div>
+            </a>
+
+        </div>
+
+        <br>
+
+        <button class="tablink" onclick="openPage('推荐', this, '#b0b0b0')" id="defaultOpen">推荐</button>
+        <button class="tablink" onclick="openPage('算法', this, '#b0b0b0')">算法</button>
+        <button class="tablink" onclick="openPage('数据结构', this, '#b0b0b0')">数据结构</button>
+        <button class="tablink" onclick="openPage('题目交流', this, '#b0b0b0')">题目交流</button>
+        <button class="tablink" onclick="openPage('竞赛', this, '#b0b0b0')">竞赛</button>
+        <button class="tablink" onclick="openPage('前端', this, '#b0b0b0')">前端</button>
+        <button class="tablink" onclick="openPage('后端', this, '#b0b0b0')">后端</button>
+        <br>
+        <br>
+        <br>
+        <div id="推荐" class="tabcontent">
+
+            <div class="tooltip" style="float: left;">
+                <a href="#">
+                    <img src="QQ截图20240322220752.png">
+                </a>
+                <div class="tooltiptext">
+                    <a href="#">
+                        <img src="QQ截图20240323095716.png" alt="" style="width: 300px;">
+                    </a>
+
+                    <div>
+                        <p style="font-weight: 300;">被阅读</p>
+                        <p style="font-weight: 600; margin-top: -5px;">39.2M</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 300;">被点赞</p>
+                        <p style="font-weight: 600; margin-top: -5px;">49.4K</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 300;">被收藏</p>
+                        <p style="font-weight: 600; margin-top: -5px;">78K</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 300;">关注者</p>
+                        <p style="font-weight: 600; margin-top: -5px;">106.8K</p>
+                    </div>
+                    <div class="tooltiptextcare">
+                        + 关注
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <p style="font-size: 10px; margin-bottom: -15px;">LeetCode</p>
+                <h3>第390场力扣周赛</h3>
+                <p>本场竞赛由「快手&力扣」联合主办，参与竞赛可获企业简历内推机会及精美周边，期待你的加入!</p>
+            </a>
+            <hr>
+        </div>
+
+
+
+        <div id="算法" class="tabcontent">
+            <div class="tooltip" style="float: left;">
+                <a href="#">
+                    <img src="QQ截图20240322220752.png">
+                </a>
+                <div class="tooltiptext">
+                    <a href="#">
+                        <img src="QQ截图20240323095716.png" alt="" style="width: 300px;">
+                    </a>
+
+                    <div>
+                        <p style="font-weight: 300;">被阅读</p>
+                        <p style="font-weight: 600; margin-top: -5px;">39.2M</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 300;">被点赞</p>
+                        <p style="font-weight: 600; margin-top: -5px;">49.4K</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 300;">被收藏</p>
+                        <p style="font-weight: 600; margin-top: -5px;">78K</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 300;">关注者</p>
+                        <p style="font-weight: 600; margin-top: -5px;">106.8K</p>
+                    </div>
+                    <div class="tooltiptextcare">
+                        + 关注
+                    </div>
+                </div>
+            </div>
+            </a>
+            <a href="#">
+                <p style="font-size: 10px; margin-bottom: -15px;">LeetCode</p>
+                <h3>普通树</h3>
+                <p>「普通树」是基于力扣上的题目，系统梳理关于树结构的算法技巧和应用场景，继而帮助大家更深入更全面地掌握树这─数据结构。</p>
+            </a>
+            <hr>
+        </div>
+
+
+
+        <div id="数据结构" class="tabcontent">
+            <div class="tooltip" style="float: left;">
+                <a href="#">
+                    <img src="QQ截图20240322220752.png">
+                </a>
+                <div class="tooltiptext">
+                    <a href="#">
+                        <img src="QQ截图20240323095716.png" alt="" style="width: 300px;">
+                    </a>
+
+                    <div>
+                        <p style="font-weight: 300;">被阅读</p>
+                        <p style="font-weight: 600; margin-top: -5px;">39.2M</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 300;">被点赞</p>
+                        <p style="font-weight: 600; margin-top: -5px;">49.4K</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 300;">被收藏</p>
+                        <p style="font-weight: 600; margin-top: -5px;">78K</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 300;">关注者</p>
+                        <p style="font-weight: 600; margin-top: -5px;">106.8K</p>
+                    </div>
+                    <div class="tooltiptextcare">
+                        + 关注
+                    </div>
+                </div>
+            </div>
+            </a>
+            <a href="#">
+                <p style="font-size: 10px; margin-bottom: -15px;">LeetCode</p>
+                <h3>二叉搜索树</h3>
+                <p>本LeetBook由力扣官方倾心打造，针对「二叉搜索树」这一「二叉树」的特殊形式的知识点的讲解与高频例题的练习。</p>
+            </a>
+            <hr>
+        </div>
+
+
+
+        <div id="题目交流" class="tabcontent">
+            <div class="tooltip" style="float: left;">
+                <a href="#">
+                    <img src="QQ截图20240322220752.png">
+                </a>
+                <div class="tooltiptext">
+                    <a href="#">
+                        <img src="QQ截图20240323095716.png" alt="" style="width: 300px;">
+                    </a>
+
+                    <div>
+                        <p style="font-weight: 300;">被阅读</p>
+                        <p style="font-weight: 600; margin-top: -5px;">39.2M</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 300;">被点赞</p>
+                        <p style="font-weight: 600; margin-top: -5px;">49.4K</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 300;">被收藏</p>
+                        <p style="font-weight: 600; margin-top: -5px;">78K</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 300;">关注者</p>
+                        <p style="font-weight: 600; margin-top: -5px;">106.8K</p>
+                    </div>
+                    <div class="tooltiptextcare">
+                        + 关注
+                    </div>
+                </div>
+            </div>
+            </a>
+            <a href="#">
+                <p style="font-size: 10px; margin-bottom: -15px;">LeetCode</p>
+                <h3>前端突破 Vue</h3>
+                <p>本LeetBook针对前端面试，直击面试中Vue的核心知识点，从问题出发，带你高效备战求职季。 </p>
+            </a>
+            <hr>
+        </div>
+
+
+
+        <div id="竞赛" class="tabcontent">
+            <a href="#" style="float:left;">
+                <div class="tooltip">
+                    <img src="QQ截图20240322220752.png">
+                    <div class="tooltiptext">
+                        <img src="QQ截图20240323095716.png" alt="" style="width: 300px;">
+                        <div>
+                            <p style="font-weight: 300;">被阅读</p>
+                            <p style="font-weight: 600; margin-top: -5px;">39.2M</p>
+                        </div>
+                        <div>
+                            <p style="font-weight: 300;">被点赞</p>
+                            <p style="font-weight: 600; margin-top: -5px;">49.4K</p>
+                        </div>
+                        <div>
+                            <p style="font-weight: 300;">被收藏</p>
+                            <p style="font-weight: 600; margin-top: -5px;">78K</p>
+                        </div>
+                        <div>
+                            <p style="font-weight: 300;">关注者</p>
+                            <p style="font-weight: 600; margin-top: -5px;">106.8K</p>
+                        </div>
+                        <div class="tooltiptextcare">
+                            + 关注
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <p style="font-size: 10px; margin-bottom: -15px;">LeetCode</p>
+                <h3>Python编程:从入门到实践</h3>
+                <p>Python神级入门书，不同程度的学习者都适用。「基础知识」和「项目」两部分带你掌握且应用Pvthon。(此为第二版)</p>
+            </a>
+            <hr>
+        </div>
+
+        <div id="前端" class="tabcontent">
+            <a href="#" style="float:left;">
+                <div class="tooltip">
+                    <img src="QQ截图20240322220752.png">
+                    <div class="tooltiptext">
+                        <img src="QQ截图20240323095716.png" alt="" style="width: 300px;">
+                        <div>
+                            <p style="font-weight: 300;">被阅读</p>
+                            <p style="font-weight: 600; margin-top: -5px;">39.2M</p>
+                        </div>
+                        <div>
+                            <p style="font-weight: 300;">被点赞</p>
+                            <p style="font-weight: 600; margin-top: -5px;">49.4K</p>
+                        </div>
+                        <div>
+                            <p style="font-weight: 300;">被收藏</p>
+                            <p style="font-weight: 600; margin-top: -5px;">78K</p>
+                        </div>
+                        <div>
+                            <p style="font-weight: 300;">关注者</p>
+                            <p style="font-weight: 600; margin-top: -5px;">106.8K</p>
+                        </div>
+                        <div class="tooltiptextcare">
+                            + 关注
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <p style="font-size: 10px; margin-bottom: -15px;">LeetCode</p>
+                <h3>深入浅出设计模式</h3>
+                <p>本LeetBook是由力扣官方著作，用生动的例子详解23种设计模式，结合具体代码实战以及有趣的课后练习，助你彻底理解设计模式</p>
+            </a>
+            <hr>
+        </div>
+
+
+        <div id="后端" class="tabcontent">
+            <a href="#" style="float:left;">
+                <div class="tooltip">
+                    <img src="QQ截图20240322220752.png">
+                    <div class="tooltiptext">
+                        <img src="QQ截图20240323095716.png" alt="" style="width: 300px;">
+                        <div>
+                            <p style="font-weight: 300;">被阅读</p>
+                            <p style="font-weight: 600; margin-top: -5px;">39.2M</p>
+                        </div>
+                        <div>
+                            <p style="font-weight: 300;">被点赞</p>
+                            <p style="font-weight: 600; margin-top: -5px;">49.4K</p>
+                        </div>
+                        <div>
+                            <p style="font-weight: 300;">被收藏</p>
+                            <p style="font-weight: 600; margin-top: -5px;">78K</p>
+                        </div>
+                        <div>
+                            <p style="font-weight: 300;">关注者</p>
+                            <p style="font-weight: 600; margin-top: -5px;">106.8K</p>
+                        </div>
+                        <div class="tooltiptextcare">
+                            + 关注
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <p style="font-size: 10px; margin-bottom: -15px;">LeetCode</p>
+                <h3>浮动窗口和双指针</h3>
+                <p>本LeetBook由力扣官方出品，围绕滑动窗口与双指针进行讲解和练习，帮助你提升算法理解和解题能力。</p>
+            </a>
+            <hr>
+        </div>
+
+        <script>
+            function openPage(pageName, elmnt, color) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablink");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].style.backgroundColor = "";
+                }
+                document.getElementById(pageName).style.display = "block";
+                elmnt.style.backgroundColor = color;
+            }
+
+            // 获取 id="defaultOpen" 的元素并点击它
+            document.getElementById("defaultOpen").click();
+        </script>
+
+        <script>
+            // 当用户从文档顶部向下滚动 20px 时，向下滑动导航栏
+            window.onscroll = function () { scrollFunction() };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("navbar").style.top = "0";
+                } else {
+                    document.getElementById("navbar").style.top = "-50px";
+                }
+            }
+        </script>
+    </div>
+
+    <div style="width: 290px;
+    height: 230px; 
+    position: fixed; 
+    top:130px;
+    left: 10px;
+    border:solid;
+    border-width: 0.1px;
+    border-radius: 10%;
+    border-color: #aaa;
+    margin-left: 1050px;
+    z-index: 1;">
+
+        <div style="margin:10px;">
+            <button class="menuButton" onclick="showContent('THU今', this, '#b0b0b0')" id="defaultShow">THU今</button>
+            <button class="menuButton" onclick="showContent('FRI22', this, '#b0b0b0')">FRI22</button>
+            <button class="menuButton" onclick="showContent('SAT23', this, '#b0b0b0')">SAT23</button>
+            <button class="menuButton" onclick="showContent('SUN24', this, '#b0b0b0')">SUN24</button>
+            <button class="menuButton" onclick="showContent('MON25', this, '#b0b0b0')">MON25</button>
+            <button class="menuButton" onclick="showContent('TUE26', this, '#b0b0b0')">TUE26</button>
+            <button class="menuButton" onclick="showContent('WED27', this, '#b0b0b0')">WED27</button>
+
+            <br>
+            <br>
+            <div id="THU今" class="tabcontent1">
+                <a href="#">
+                    <h5 class="dayworkhead">每日一题</h5>
+                    <p class="dayworkbody"> 2617.网格图中最少访问的格子数</p>
+                </a>
+                <hr>
+            </div>
+
+
+            <div id="FRI22" class="tabcontent1">
+                <a href="#">
+                    <h5 class="dayworkhead">每日一题</h5>
+                    <p class="dayworkbody">零点揭晓</p>
+                </a>
+                <hr>
+            </div>
+
+
+            <div id="SAT23" class="tabcontent1">
+                <a href="#">
+                    <h5 class="dayworkhead">每日一题</h5>
+                    <p class="dayworkbody">零点揭晓</p>
+                </a>
+                <hr size="0.05px">
+            </div>
+
+
+            <div id="SUN24" class="tabcontent1">
+                <a href="#">
+                    <h5 class="dayworkhead">每日一题</h5>
+                    <p class="dayworkbody">零点揭晓</p>
+                </a>
+                <hr>
+            </div>
+
+            <div id="MON25" class="tabcontent1">
+                <a href="#">
+                    <h5 class="dayworkhead">每日一题</h5>
+                    <p class="dayworkbody">零点揭晓</p>
+                </a>
+                <hr>
+            </div>
+
+            <div id="TUE26" class="tabcontent1">
+                <a href="#">
+                    <h5 class="dayworkhead">每日一题</h5>
+                    <p class="dayworkbody">零点揭晓</p>
+                </a>
+                <hr>
+            </div>
+
+            <div id="WED27" class="tabcontent1">
+                <a href="#">
+                    <h5 class="dayworkhead">每日一题</h5>
+                    <p class="dayworkbody">零点揭晓</p>
+                </a>
+                <hr>
+            </div>
+
+            <script>
+                function showContent(pageName, elmnt, color) {
+                    var i, tabcontent1, tablinks;
+                    tabcontent1 = document.getElementsByClassName("tabcontent1");
+                    for (i = 0; i < tabcontent1.length; i++) {
+                        tabcontent1[i].style.display = "none";
+                    }
+                    tablinks = document.getElementsByClassName("menuButton");
+                    for (i = 0; i < tablinks.length; i++) {
+                        tablinks[i].style.backgroundColor = "";
+                    }
+                    document.getElementById(pageName).style.display = "block";
+                    elmnt.style.backgroundColor = color;
+                }
+
+                // Get the element with id="defaultShow" and click on it
+                document.getElementById("defaultShow").click();
+            </script>
+
+        </div>
+
+        <p style="text-align: center;font-weight: 200;">欢迎来到力扣</p>
+        <a href="#" onclick="showLoginPopup()">
+            <div style="width: 250px;height: 36px; background-color: black;border-radius: 5%;margin-left: 20px;">
+                <p style="color: white;font-size: 18px;text-align: center;line-height: 36px;">登录/注册</p>
+            </div>
+        </a>
+
+
+        <!-- 登录弹出窗口 -->
+        <div id="loginPopup"
+            style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #f2f2f2; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+            <h2>用户登录</h2>
+            <form>
+                <label for="username" class="textStyle">用户名</label>
+                <span>:</span>
+                <input type="text" id="username" name="username">
+                <br><br>
+                <label for="password" class="textStyle">密码</label>
+                <span>:</span>
+                <input type="password" id="password" name="password">
+                <br><br>
+                <input type="submit" value="登录">
+            </form>
+            <button onclick="closeLoginPopup()">关闭</button>
+        </div>
+
+        <script>
+            function showLoginPopup() {
+                document.getElementById("loginPopup").style.display = "block";
+            }
+
+            function closeLoginPopup() {
+                document.getElementById("loginPopup").style.display = "none";
+            }
+        </script>
+
+
+        <p style="margin-top: 40px; color:#b5b5b5;">
+            <a href="#" class="dayworkbelow">关于我们</a>·
+            <a href="#" class="dayworkbelow">企业服务</a>·
+            <a href="#" class="dayworkbelow">商务咨询</a>·
+            <a href="#" class="dayworkbelow">使用条款</a>·
+            <a href="#" class="dayworkbelow">隐私政策</a>
+            <a href="#" class="dayworkbelow">问题反馈</a>·
+            <a href="#" class="dayworkbelow">侵权投诉</a>·
+            <a href="#" class="dayworkbelow">关于我们</a>·
+            <a href="#" class="dayworkbelow">证照中心</a>
+            <br>
+            <a href="#" class="dayworkbelow">沪ICP备18019787号-20</a>·
+            <a href="#" class="dayworkbelow">沪ICP证B2-20180578</a>
+
+        </p>
+    </div>
+</body>
+
+</html>

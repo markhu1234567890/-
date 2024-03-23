@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .menuButton {
+        background-color: rgb(255, 255, 255);
+        font-family: "Gill Sans Extrabold", monospace;
+        word-wrap: break-word;
+        border: 0;
+        border-radius: 10%;
+        color: rgb(6, 6, 6);
+        float: left;
+        outline: none;
+        margin: 2px;
+        cursor: pointer;
+        padding: 6px 6px;
+        font-size: 14px;
+        width: 34px;
+        }
+        .menuButton:hover {
+        font-weight: 700;
+        }
+        .tabcontent1 {
+        color: black;
+        display: none;    
+        height: 100%;
+        }
+        .dayworkhead{
+            color: rgb(54, 154, 193)
+            ;padding-left:10px;
+        }
+        .dayworkbody{
+            color: rgb(52, 48, 48);
+            margin-top: -15px;
+            padding-left:10px;
+            font-size: 14px;
+        }
+        #THU今 {background-color: white}
+        #FRI22 {background-color: white}
+        #SAT23 {background-color: white}
+        #SUN24 {background-color: white} 
+        #MON25 {background-color: white} 
+        #TUE26 {background-color: white} 
+        #WED27 {background-color: white} 
+
+    </style> 
+</head>
+<body>
+    <div style="width: 290px;
+    height: 250px; 
+    position: fixed; 
+    top:130px;
+    left: 10px;
+    border:solid;
+    border-width: 0.1px;
+    border-radius: 10%;
+    border-color: #aaa;
+    margin-left: 1050px;
+    z-index: 1;">
+    
+        <div style="margin:10px;">
+        <button class="menuButton" onclick="showContent('THU今', this, '#b0b0b0')" id="defaultShow">THU今</button>
+        <button class="menuButton" onclick="showContent('FRI22', this, '#b0b0b0')">FRI22</button>
+        <button class="menuButton" onclick="showContent('SAT23', this, '#b0b0b0')">SAT23</button>
+        <button class="menuButton" onclick="showContent('SUN24', this, '#b0b0b0')">SUN24</button>
+        <button class="menuButton" onclick="showContent('MON25', this, '#b0b0b0')">MON25</button>
+        <button class="menuButton" onclick="showContent('TUE26', this, '#b0b0b0')">TUE26</button>
+        <button class="menuButton" onclick="showContent('WED27', this, '#b0b0b0')">WED27</button>
+
+        <br>
+        <br>
+            <div id="THU今" class="tabcontent1">
+                <a href="#"  >
+                    <h5 class="dayworkhead">每日一题</h5>
+                    <p class="dayworkbody"> 2617.网格图中最少访问的格子数</p>
+                </a>
+                <hr>
+            </div>
+            
+           
+           <div id="FRI22" class="tabcontent1">
+                <a href="#" >
+                    <h5 class="dayworkhead">每日一题</h5>
+                    <p class="dayworkbody">零点揭晓</p>
+                </a>
+                <hr>
+           </div>
+           
+           
+           <div id="SAT23" class="tabcontent1">
+            <a href="#">
+                <h5 class="dayworkhead">每日一题</h5>
+                <p class="dayworkbody">零点揭晓</p>
+            </a>
+           <hr size="0.05px">
+           </div>
+           
+   
+           <div id="SUN24" class="tabcontent1">
+            <a href="#">
+                <h5 class="dayworkhead">每日一题</h5>
+                <p class="dayworkbody">零点揭晓</p>
+            </a>
+           <hr>
+           </div>
+       
+           <div id="MON25" class="tabcontent1">
+            <a href="#">
+                <h5 class="dayworkhead">每日一题</h5>
+                <p class="dayworkbody">零点揭晓</p>
+            </a>
+           <hr>
+           </div>
+   
+           <div id="TUE26" class="tabcontent1">
+            <a href="#">
+                <h5 class="dayworkhead">每日一题</h5>
+                <p class="dayworkbody">零点揭晓</p>
+            </a>
+           <hr>
+           </div>
+   
+           <div id="WED27" class="tabcontent1">
+            <a href="#">
+                <h5 class="dayworkhead">每日一题</h5>
+                <p class="dayworkbody">零点揭晓</p>
+            </a>
+           <hr>
+           </div>
+
+        <script>
+               function showContent(pageName, elmnt, color) {
+               var i, tabcontent1, tablinks;
+               tabcontent1 = document.getElementsByClassName("tabcontent1");
+               for (i = 0; i < tabcontent1.length; i++) {
+                   tabcontent1[i].style.display = "none";
+                }
+               tablinks = document.getElementsByClassName("menuButton");
+               for (i = 0; i < tablinks.length; i++) {
+                   tablinks[i].style.backgroundColor = "";
+                }
+                document.getElementById(pageName).style.display = "block";
+                elmnt.style.backgroundColor = color;
+                }
+               
+               // Get the element with id="defaultShow" and click on it
+               document.getElementById("defaultShow").click();
+               </script>
+
+        </div>
+        <p style="text-align: center;font-weight: 200;">欢迎来到力扣</p>
+        <a href="#">
+            <div style="width: 250px;height: 40px; background-color: black;border-radius: 10%;margin-left: 20px;">
+            <p style="color: white;font-size: 20px;text-align: center;line-height: 40px;">登录/注册</p>
+            </div>
+        </a>
+        </div>
+</body>
+</html>
