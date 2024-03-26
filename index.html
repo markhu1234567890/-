@@ -310,6 +310,18 @@
             width: 60px;
             text-align-last: justify;
         }
+        .enwindow{
+            width: 300px;
+            height: 400px;
+            display: none;
+            position: fixed; 
+            top: 50%; left: 50%; 
+            transform: translate(-50%, -50%); 
+            background-color: #f2f2f2; 
+            padding: 20px; 
+            border-radius:10px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 
@@ -811,37 +823,146 @@
 
         <p style="text-align: center;font-weight: 200;">欢迎来到力扣</p>
         <a href="#" onclick="showLoginPopup()">
-            <div style="width: 250px;height: 36px; background-color: black;border-radius: 5%;margin-left: 20px;">
+            <div style="width: 250px;height: 36px; background-color: black;border-radius: 10px;margin-left: 20px;">
                 <p style="color: white;font-size: 18px;text-align: center;line-height: 36px;">登录/注册</p>
             </div>
         </a>
 
 
         <!-- 登录弹出窗口 -->
-        <div id="loginPopup"
-            style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #f2f2f2; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-            <h2>用户登录</h2>
-            <form>
-                <label for="username" class="textStyle">用户名</label>
+        <div id="loginPopup" class="enwindow">
+            <div>
+                <img src="QQ截图20240321164319.png" alt="" style="width: 200px;float: left;">
+                <a href="javascript:void(0)" onclick="changeLoginPopup()" style="background-color: #f2f2f2;">二维码验证</a>
+            </div>
+            <form style="clear:both;">
+                <label for="username" class="textStyle" >用户名</label>
                 <span>:</span>
-                <input type="text" id="username" name="username">
+                <input type="tel" id="username" name="username" placeholder="输入手机号">
+                <br><br>
+                <label for="password" class="textStyle">密码</label>
+                <span>:</span>
+                <input type="password" id="password" name="password" placeholder="验证码">
+                <br><br>    
+                <input type="submit" value="登录/注册" style="color: white; font-size: 18px; text-align: center; width: 280px;height: 36px; background-color: black;border-radius: 10px; ">
+            </form>
+           
+            <a  href="javascript:void(0)" onclick="changeLoginPopup2()">
+                <p style="margin: 10px;height: 30px;">账号密码登录</p>
+           </a>
+            <div style="background-color:white;justify-content: space-around;">
+                <a href="#">
+                    <img src="QQ.png"  alt="" style="float: left; margin-top: 5px;width: 19%;" >
+                </a>
+                <a href="#">
+                    <img src="GIT.png" alt="" style="margin-bottom: 4px;width: 19%;">
+                </a>
+                <a href="#">
+                    <img src="WB.png" alt="" style="width: 20%;">
+                </a>
+                <a href="#">
+                    <img src="WC.png" alt="" style="margin-bottom: 5px;width: 18%;">
+                </a>
+                <a href="#">
+                    <img src="MORE.png" alt="" style="margin-bottom: 6px;width: 19%;">
+                </a>
+                
+            </div>
+            <div style="width: 100%;text-align: center;">
+                <a href="#" style="margin: 10px;background-color: blue;">已有美国账号</a>
+            </div>
+            
+            <p style="font-size: 10px;font-weight: 200; margin-top: 10px;">注册或登录即代表您同意《用户协议》和《隐私协议》</p>
+            <button onclick="closeLoginPopup()">关闭</button>
+        </div>
+
+        <div id="loginPopup3" class="enwindow">
+            <div>
+                <img src="QQ截图20240321164319.png" alt="" style="width: 200px;float: left;">
+                <a href="javascript:void(0)" onclick="changeLoginPopup()" style="background-color: #f2f2f2;">二维码验证</a>
+            </div>
+            <form style="clear:both;">
+                <label for="username" class="textStyle" >用户名</label>
+                <span>:</span>
+                <input type="tel" id="username" name="username" >
                 <br><br>
                 <label for="password" class="textStyle">密码</label>
                 <span>:</span>
                 <input type="password" id="password" name="password">
-                <br><br>
-                <input type="submit" value="登录">
+                <br><br>    
+                <input type="submit" value="登录/注册" style="color: white; font-size: 18px; text-align: center; width: 280px;height: 36px; background-color: black;border-radius: 10px; ">
             </form>
-            <button onclick="closeLoginPopup()">关闭</button>
+           
+            <a  href="javascript:void(0)" onclick="changeLoginPopup3()">
+                <p style="margin: 10px;height: 30px;">验证码登录</p>
+           </a>
+            <div style="background-color:white;justify-content: space-around;">
+                <a href="#">
+                    <img src="QQ.png"  alt="" style="float: left; margin-top: 5px;width: 19%;" >
+                </a>
+                <a href="#">
+                    <img src="GIT.png" alt="" style="margin-bottom: 4px;width: 19%;">
+                </a>
+                <a href="#">
+                    <img src="WB.png" alt="" style="width: 20%;">
+                </a>
+                <a href="#">
+                    <img src="WC.png" alt="" style="margin-bottom: 5px;width: 18%;">
+                </a>
+                <a href="#">
+                    <img src="MORE.png" alt="" style="margin-bottom: 6px;width: 19%;">
+                </a>
+                
+            </div>
+            <div style="width: 100%;text-align: center;">
+                <a href="#" style="margin: 10px;background-color: blue;">已有美国账号</a>
+            </div>
+            
+            <p style="font-size: 10px;font-weight: 200; margin-top: 10px;">注册或登录即代表您同意《用户协议》和《隐私协议》</p>
+            <button onclick="closeLoginPopup3()">关闭</button>
+        </div>
+
+        <div id="loginPopup2" class="enwindow" style="text-align: center;">
+            <img src="QQ截图20240325210543.png" alt="" style="width: 80%; ">
+            <br>
+            <button onclick="closeLoginPopup2()">关闭</button>
         </div>
 
         <script>
+            // 登录
             function showLoginPopup() {
                 document.getElementById("loginPopup").style.display = "block";
             }
 
+           //关闭手机号登录
             function closeLoginPopup() {
                 document.getElementById("loginPopup").style.display = "none";
+            }
+             // 关闭二维码登录
+             function closeLoginPopup2() {
+                document.getElementById("loginPopup2").style.display = "none";
+            }
+            // 关闭用户名登录
+            function closeLoginPopup3() {
+                document.getElementById("loginPopup3").style.display = "none";
+            }
+
+
+            // 手机号登录换二维码
+            function changeLoginPopup(){
+                document.getElementById("loginPopup").style.display = "none";
+                document.getElementById("loginPopup2").style.display = "block";
+            }
+           
+            // 手机号登录换用户名
+            function changeLoginPopup2(){
+                document.getElementById("loginPopup").style.display = "none";
+                document.getElementById("loginPopup3").style.display = "block";
+            }
+            // 用户名登录换手机号
+            function changeLoginPopup3(){
+                document.getElementById("loginPopup3").style.display = "none";
+                document.getElementById("loginPopup").style.display = "block";
             }
         </script>
 
