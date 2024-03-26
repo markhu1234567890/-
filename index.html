@@ -305,6 +305,15 @@
         }
 
         /* 登录弹窗 用户名 与 密码 格式 */
+
+        .inputStyle1{
+            width: 240px;
+            height: 27px;
+        }
+        .inputStyle2{
+            width: 200px;
+            height: 27px;
+        }
         .textStyle {
             display: inline-block;
             width: 60px;
@@ -312,12 +321,12 @@
         }
         .enwindow{
             width: 300px;
-            height: 400px;
+            height: 460px;
             display: none;
             position: fixed; 
             top: 50%; left: 50%; 
             transform: translate(-50%, -50%); 
-            background-color: #f2f2f2; 
+            background-color: white; 
             padding: 20px; 
             border-radius:10px; 
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -833,17 +842,19 @@
         <div id="loginPopup" class="enwindow">
             <div>
                 <img src="QQ截图20240321164319.png" alt="" style="width: 200px;float: left;">
-                <a href="javascript:void(0)" onclick="changeLoginPopup()" style="background-color: #f2f2f2;">二维码验证</a>
+                <a href="javascript:void(0)" onclick="changeLoginPopup()" style="background-color: #f2f2f2">二维码验证</a>
             </div>
             <form style="clear:both;">
-                <label for="username" class="textStyle" >用户名</label>
-                <span>:</span>
-                <input type="tel" id="username" name="username" placeholder="输入手机号">
-                <br><br>
-                <label for="password" class="textStyle">密码</label>
-                <span>:</span>
-                <input type="password" id="password" name="password" placeholder="验证码">
-                <br><br>    
+                <!-- <label for="username" ></label> -->
+                <div style="text-align: center;">
+                    <input type="tel" id="username" name="username" placeholder="输入手机号" class="inputStyle1">
+                </div>
+                <br>
+                <div style="text-align: center;">
+                    <input type="password" id="password" name="password" placeholder="验证码" class="inputStyle1">
+                </div>
+                
+                <br>    
                 <input type="submit" value="登录/注册" style="color: white; font-size: 18px; text-align: center; width: 280px;height: 36px; background-color: black;border-radius: 10px; ">
             </form>
            
@@ -869,11 +880,17 @@
                 
             </div>
             <div style="width: 100%;text-align: center;">
-                <a href="#" style="margin: 10px;background-color: blue;">已有美国账号</a>
+                <a href="#" >已有美国账号</a>
             </div>
-            
-            <p style="font-size: 10px;font-weight: 200; margin-top: 10px;">注册或登录即代表您同意《用户协议》和《隐私协议》</p>
+            <br><br>
+            <p style="font-size: 10px;font-weight: 200; ">注册或登录即代表您同意《用户协议》和《隐私协议》</p>
             <button onclick="closeLoginPopup()">关闭</button>
+        </div>
+
+        <div id="loginPopup2" class="enwindow" style="text-align: center;">
+            <img src="QQ截图20240325210543.png" alt="" style="width: 80%; ">
+            <br>
+            <button onclick="closeLoginPopup2()">关闭</button>
         </div>
 
         <div id="loginPopup3" class="enwindow">
@@ -884,18 +901,18 @@
             <form style="clear:both;">
                 <label for="username" class="textStyle" >用户名</label>
                 <span>:</span>
-                <input type="tel" id="username" name="username" >
+                <input type="tel" id="username" name="username" class="inputStyle2">
                 <br><br>
                 <label for="password" class="textStyle">密码</label>
                 <span>:</span>
-                <input type="password" id="password" name="password">
+                <input type="password" id="password" name="password" class="inputStyle2">
                 <br><br>    
                 <input type="submit" value="登录/注册" style="color: white; font-size: 18px; text-align: center; width: 280px;height: 36px; background-color: black;border-radius: 10px; ">
             </form>
            
             <a  href="javascript:void(0)" onclick="changeLoginPopup3()">
                 <p style="margin: 10px;height: 30px;">验证码登录</p>
-           </a>
+            </a>
             <div style="background-color:white;justify-content: space-around;">
                 <a href="#">
                     <img src="QQ.png"  alt="" style="float: left; margin-top: 5px;width: 19%;" >
@@ -914,19 +931,15 @@
                 </a>
                 
             </div>
-            <div style="width: 100%;text-align: center;">
-                <a href="#" style="margin: 10px;background-color: blue;">已有美国账号</a>
+            <div style="width: 100%;text-align: center; ">
+                <a href="#" >已有美国账号</a>
             </div>
-            
-            <p style="font-size: 10px;font-weight: 200; margin-top: 10px;">注册或登录即代表您同意《用户协议》和《隐私协议》</p>
+            <br><br>
+            <p style="font-size: 10px;font-weight: 200; ">注册或登录即代表您同意《用户协议》和《隐私协议》</p>
             <button onclick="closeLoginPopup3()">关闭</button>
         </div>
 
-        <div id="loginPopup2" class="enwindow" style="text-align: center;">
-            <img src="QQ截图20240325210543.png" alt="" style="width: 80%; ">
-            <br>
-            <button onclick="closeLoginPopup2()">关闭</button>
-        </div>
+        
 
         <script>
             // 登录
