@@ -368,37 +368,7 @@
             <hr>
         </div>
 
-        <script>
-            function openPage(pageName, elmnt, color) {
-                var i, tabcontent, tablinks;
-                tabcontent = document.getElementsByClassName("tabcontent");
-                for (i = 0; i < tabcontent.length; i++) {
-                    tabcontent[i].style.display = "none";
-                }
-                tablinks = document.getElementsByClassName("tablink");
-                for (i = 0; i < tablinks.length; i++) {
-                    tablinks[i].style.backgroundColor = "";
-                }
-                document.getElementById(pageName).style.display = "block";
-                elmnt.style.backgroundColor = color;
-            }
 
-            // 获取 id="defaultOpen" 的元素并点击它
-            document.getElementById("defaultOpen").click();
-        </script>
-
-        <script>
-            // 当用户从文档顶部向下滚动 20px 时，向下滑动导航栏
-            window.onscroll = function () { scrollFunction() };
-
-            function scrollFunction() {
-                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                    document.getElementById("navbar").style.top = "0";
-                } else {
-                    document.getElementById("navbar").style.top = "-50px";
-                }
-            }
-        </script>
     </div>
 
     <div style="width: 290px;
@@ -482,25 +452,6 @@
                 </a>
                 <hr>
             </div>
-
-            <script>
-                function showContent(pageName, elmnt, color) {
-                    var i, tabcontent1, tablinks;
-                    tabcontent1 = document.getElementsByClassName("tabcontent1");
-                    for (i = 0; i < tabcontent1.length; i++) {
-                        tabcontent1[i].style.display = "none";
-                    }
-                    tablinks = document.getElementsByClassName("menuButton");
-                    for (i = 0; i < tablinks.length; i++) {
-                        tablinks[i].style.backgroundColor = "";
-                    }
-                    document.getElementById(pageName).style.display = "block";
-                    elmnt.style.backgroundColor = color;
-                }
-
-                // Get the element with id="defaultShow" and click on it
-                document.getElementById("defaultShow").click();
-            </script>
 
         </div>
 
@@ -613,52 +564,6 @@
             <button onclick="closeLoginPopup3()">关闭</button>
         </div>
 
-        
-
-        <script>
-            // 登录
-            function showLoginPopup() {
-                document.getElementById("loginPopup").style.display = "block";
-            }
-
-           //关闭手机号登录
-            function closeLoginPopup() {
-                document.getElementById("loginPopup").style.display = "none";
-            }
-             // 关闭二维码登录
-             function closeLoginPopup2() {
-                document.getElementById("loginPopup2").style.display = "none";
-            }
-            // 关闭用户名登录
-            function closeLoginPopup3() {
-                document.getElementById("loginPopup3").style.display = "none";
-            }
-
-
-            // 手机号登录换二维码
-            function changeLoginPopup(){
-                document.getElementById("loginPopup").style.display = "none";
-                document.getElementById("loginPopup2").style.display = "block";
-            }
-           
-            // 手机号登录换用户名
-            function changeLoginPopup2(){
-                document.getElementById("loginPopup").style.display = "none";
-                document.getElementById("loginPopup3").style.display = "block";
-            }
-            // 用户名登录换手机号
-            function changeLoginPopup3(){
-                document.getElementById("loginPopup3").style.display = "none";
-                document.getElementById("loginPopup").style.display = "block";
-            }
-            // 用户名登录换二维码
-            function changeLoginPopup4(){
-                document.getElementById("loginPopup3").style.display = "none";
-                document.getElementById("loginPopup2").style.display = "block";
-            }
-        </script>
-
-
         <p style="margin-top: 40px; color:#b5b5b5;">
             <a href="#" class="dayworkbelow">关于我们</a>·
             <a href="#" class="dayworkbelow">企业服务</a>·
@@ -675,6 +580,11 @@
 
         </p>
     </div>
+
+
+    <script src="openPage.js"></script>
+    <script src="showcontent.js"></script>
+    <script src="login.js"></script>
 </body>
 
 </html>
